@@ -67,9 +67,6 @@ shinyUI(fluidPage(
                  step = 1
     )),
     
-    actionButton('generate',
-                 'Generate Plot'),
-    
     
     mainPanel(
       plotOutput(
