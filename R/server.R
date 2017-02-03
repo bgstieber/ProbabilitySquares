@@ -61,12 +61,21 @@ shinyServer(function(input, output){
   
   square_data$color <- do_cols
   
-  ggplot(square_data, aes(x = x, y = y))+
+  the_plot <- 
+    ggplot(square_data, aes(x = x, y = y))+
     geom_tile(aes(fill = factor(do_cols)), colour = 'grey90')+
-    scale_fill_brewer(palette = 'Set1')
+    scale_fill_brewer(palette = 'Set1')+
+    theme_minimal()+
+    coord_fixed()+
+    theme(legend.position = 'none',
+          axis.text = element_blank(),
+          axis.title = element_blank(),
+          panel.grid = element_blank())
   
   
-  
+  output$squarePlot <- renderPlot({
+    plot(the_plot)
+  })
   
   
   
