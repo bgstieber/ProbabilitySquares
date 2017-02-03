@@ -4,30 +4,40 @@ library(ggplot2)
 shinyServer(function(input, output){
   #create square data.frame
   
-  square_data <- expand.grid('x' =  1:input$dims,
+  gen_square <- reactive({expand.grid('x' =  1:input$dims,
                              'y' = 1:input$dims)
+  })
+  
+  square_data <- gen_square()
   
   num_of_squares <- input$dims^2
   
   #create percs vector
   
+  
+  gen_percs <- 
+    reactive({
   if(input$cats == 2){
-    percs <- c(input$cat1, input$cat2)
+    c(input$cat1, input$cat2)
   }else if(input$cats == 3){
-    percs <- c(input$cat1, input$cat2,
+    c(input$cat1, input$cat2,
                input$cat3)
   }else if(input$cats == 4){
-    percs <- c(input$cat1, input$cat2,
+    c(input$cat1, input$cat2,
                input$cat3, input$cat4)
   }else if(input$cats == 5){
-    percs <- c(input$cat1, input$cat2,
+    c(input$cat1, input$cat2,
                input$cat3, input$cat4,
                input$cat5)
   }else{
-    percs <- c(input$cat1, input$cat2,
+    c(input$cat1, input$cat2,
                input$cat3, input$cat4,
                input$cat5, input$cat6)
   }
+  }
+  )
+  
+  percs <- gen_percs()
   
   #user may have entered too high / low percentages,
   #adjust accordingly
