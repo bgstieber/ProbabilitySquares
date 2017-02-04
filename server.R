@@ -1,6 +1,6 @@
 library(shiny)
 library(ggplot2)
-
+library(scales)
 
 
 shinyServer(function(input, output){
@@ -64,6 +64,20 @@ shinyServer(function(input, output){
     #add color column 
     square_data$color <- do_cols
     
+    #make a title
+    title1 <- "With a population of 100,000 people, each square would represent about"
+    title2 <- comma(round(100000 / num_of_squares()))
+    title3 <- "people."
+    
+    full_title <- paste(title1, title2, title3)
+    
+    #show percentages
+    col_display <- c('R','B','G','P','O','Y')[1:input$cats]
+    sub_title <- paste0(col_display, 
+                        ": ", 
+                        percent(percs_adjust), 
+                        collapse = ", ")
+    
     #make the plot
     the_plot <- 
       ggplot(square_data, aes(x = x, y = y))+
@@ -74,7 +88,8 @@ shinyServer(function(input, output){
       theme(legend.position = 'none',
             axis.text = element_blank(),
             axis.title = element_blank(),
-            panel.grid = element_blank())
+            panel.grid = element_blank())+
+      ggtitle(full_title, subtitle = sub_title)
     #draw the plot
     plot(the_plot)
   }
