@@ -3,9 +3,14 @@ library(shiny)
 shinyUI(fluidPage(
   
   titlePanel("Probability Squares"),
+  p("Here we present a vis design that can be used to",
+    "communicate probabilities, likelihoods, or group memberships.",
+    "In fact, it's been used to communicate classifier performance."),
+  
   
   sidebarLayout(
     sidebarPanel(
+    
     #ask for number of squares
     sliderInput('dims',
                 'Size of Square (will be X by X)',
@@ -77,7 +82,17 @@ shinyUI(fluidPage(
                  step = 1,
                  value = 50
     )
-    )
+    ),
+    
+    helpText(a(href="https://twitter.com/PollsAndVotes/status/826619735152418816", 
+               target="_blank", "Inspiration from Twitter")),
+    
+    helpText(a(href = "http://graphics.cs.wisc.edu/Papers/2014/SAMG14/visualizing-validation-of-protein-surface-classifiers.pdf",
+            target = "_blank", "Classifier Paper")),
+    
+    helpText(a(href="https://github.com/bgstieber/ProbabilitySquares", 
+               target="_blank", "View Shiny code"))
+    
     
     ),
 
