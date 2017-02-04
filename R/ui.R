@@ -36,6 +36,9 @@ shinyUI(fluidPage(
                  step = 1
                  ),
     
+    #here we use conditional panels
+    #I'll bet there's a better way, I just haven't
+    #figured it out....yet
     conditionalPanel("input.cats >= 3",
     numericInput('cat3',
                  '% of Total for 3rd Category (G)',
@@ -80,7 +83,8 @@ shinyUI(fluidPage(
 
     mainPanel(
       plotOutput(
-        "squarePlot"
+        "squarePlot",
+        height = "600px"
       )
     )
     
