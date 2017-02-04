@@ -1,4 +1,10 @@
-
+#function to create a probability square
+#takes in two inputs: `dim` and `percents`
+# dim: size of the square, i.e. the square will be dim X dim
+# percents: percentage of each category
+#   currently, we only support 2 - 6 categories
+#   will perform some arithmetic on the vector
+#   so that the final result will sum to 1
 
 plot_p_square <- function(dim, percents){
   #require packages
