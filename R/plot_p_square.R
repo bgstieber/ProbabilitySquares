@@ -69,6 +69,4 @@ plot_p_square <- function(dim, percents){
           axis.title = element_blank(),
           panel.grid = element_blank())+
     ggtitle(full_title, subtitle = sub_title)
-  
-  
 }
