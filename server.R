@@ -58,7 +58,7 @@ plot_p_square <- function(dim, percents, title = FALSE){
   full_title <- ifelse(title, full_title, '')
   
   #draw plot
-  plt <- ggplot(sq_table, aes(x = x, y = y))+
+  ggplot(sq_table, aes(x = x, y = y))+
     geom_tile(aes(fill = factor(category)),
               colour = 'grey90', alpha = .8)+
     scale_fill_brewer(palette = 'Set1')+
