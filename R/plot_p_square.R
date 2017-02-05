@@ -6,7 +6,7 @@
 #   will perform some arithmetic on the vector
 #   so that the final result will sum to 1
 
-plot_p_square <- function(dim, percents){
+plot_p_square <- function(dim, percents, title = FALSE){
   #require packages
   require(scales)
   require(ggplot2)
@@ -57,16 +57,20 @@ plot_p_square <- function(dim, percents){
                       percent(percents_adj), 
                       collapse = ", ")
   
+  full_title <- ifelse(title, full_title, '')
+  
   #draw plot
   ggplot(sq_table, aes(x = x, y = y))+
     geom_tile(aes(fill = factor(category)),
-              colour = 'grey90')+
+              colour = 'grey90', alpha = .8)+
     scale_fill_brewer(palette = 'Set1')+
     theme_minimal()+
     coord_fixed()+
     theme(legend.position = 'none',
           axis.text = element_blank(),
           axis.title = element_blank(),
-          panel.grid = element_blank())+
-    ggtitle(full_title, subtitle = sub_title)
+          panel.grid = element_blank(),
+          plot.margin= unit(rep(.1, 4), "lines"))+
+    ggtitle(full_title, subtitle = sub_title)+
+    labs(x = NULL, y = NULL)
 }
