@@ -1,6 +1,8 @@
 library(shiny)
 library(ggplot2)
 library(scales)
+library(grid)
+library(gridExtra)
 
 plot_p_square <- function(dim, percents){
   #require packages
@@ -70,33 +72,42 @@ plot_p_square <- function(dim, percents){
 shinyServer(function(input, output){
 
   #build vector of percentages
-  percs <-   reactive({
-    if(input$cats == 2){
-    c(input$cat1, input$cat2)
-  }else if(input$cats == 3){
-    c(input$cat1, input$cat2,
-      input$cat3)
-  }else if(input$cats == 4){
-    c(input$cat1, input$cat2,
-      input$cat3, input$cat4)
-  }else if(input$cats == 5){
-    c(input$cat1, input$cat2,
-      input$cat3, input$cat4,
-      input$cat5)
-  }else{
-    c(input$cat1, input$cat2,
-      input$cat3, input$cat4,
-      input$cat5, input$cat6)
-  }})
+  percs_1 <-   reactive({
+    c(input$cat1_1, input$cat2_1,
+      input$cat3_1, input$cat4_1,
+      input$cat5_1, input$cat6_1)[1:input$cats]
+    }
+    )
   
-  gen_squares <- reactive({
-    plot_p_square(dim = input$dims, percents = percs())
+  percs_2 <-   reactive({
+    c(input$cat1_2, input$cat2_2,
+      input$cat3_2, input$cat4_2,
+      input$cat5_2, input$cat6_2)[1:input$cats]
+  }
+  )
+  
+  gen_square1 <- reactive({
+    plot_p_square(dim = input$dims, percents = percs_1())
+  })
+  
+  gen_square2 <- reactive({
+    plot_p_square(dim = input$dims, percents = percs_2())
   })
 
   #make the plot, lots of reactivity stuff
   output$squarePlot <- renderPlot(
     {
-      gen_squares()
+      if(input$sq_d == 1){
+        gen_square1()  
+      }else if(input$sq_d == 2){
+        grid.arrange(
+          gen_square1(),
+          gen_square2(),
+          nrow = 1
+        )
+        
+      }
+      
   }
   )
   }
