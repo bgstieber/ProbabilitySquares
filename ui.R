@@ -92,7 +92,7 @@ shinyUI(fluidPage(
                             h5('% of Total for 1st Category(R)'), 
                             fluidRow(
                               column(6,
-                                     numericInput('cat1_1',
+                                     numericInput('cat1_1b',
                                                   'Square 1',
                                                   min = 0,
                                                   max = 100,
@@ -112,7 +112,7 @@ shinyUI(fluidPage(
                             h5('% of Total for 2nd Category(B)'), 
                             fluidRow(
                               column(6,
-                                     numericInput('cat2_1',
+                                     numericInput('cat2_1b',
                                                   'Square 1',
                                                   min = 0,
                                                   max = 100,
@@ -134,7 +134,7 @@ shinyUI(fluidPage(
                                                h5('% of Total for 3rd Category(G)'), 
                                                fluidRow(
                                                  column(6,
-                                                        numericInput('cat3_1',
+                                                        numericInput('cat3_1b',
                                                                      'Square 1',
                                                                      min = 0,
                                                                      max = 100,
@@ -156,7 +156,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 4th Category(P)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat4_1',
+                                                      numericInput('cat4_1b',
                                                                    'Square 1',
                                                                    min = 0,
                                                                    max = 100,
@@ -178,7 +178,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 5th Category(O)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat5_1',
+                                                      numericInput('cat5_1b',
                                                                    'Square 1',
                                                                    min = 0,
                                                                    max = 100,
@@ -200,7 +200,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 6th Category(Y)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat6_1',
+                                                      numericInput('cat6_1b',
                                                                    'Square 1',
                                                                    min = 0,
                                                                    max = 100,
@@ -295,7 +295,7 @@ shinyUI(fluidPage(
                             h5('% of Total for 1st Category(R)'), 
                             fluidRow(
                               column(6,
-                                     numericInput('cat1_3',
+                                     numericInput('cat1_3b',
                                                   'Square 3',
                                                   min = 0,
                                                   max = 100,
@@ -315,7 +315,7 @@ shinyUI(fluidPage(
                             h5('% of Total for 2nd Category(B)'), 
                             fluidRow(
                               column(6,
-                                     numericInput('cat2_3',
+                                     numericInput('cat2_3b',
                                                   'Square 3',
                                                   min = 0,
                                                   max = 100,
@@ -336,7 +336,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 3rd Category(G)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat3_3',
+                                                      numericInput('cat3_3b',
                                                                    'Square 3',
                                                                    min = 0,
                                                                    max = 100,
@@ -358,7 +358,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 4th Category(P)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat4_3',
+                                                      numericInput('cat4_3b',
                                                                    'Square 3',
                                                                    min = 0,
                                                                    max = 100,
@@ -380,7 +380,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 5th Category(O)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat5_3',
+                                                      numericInput('cat5_3b',
                                                                    'Square 3',
                                                                    min = 0,
                                                                    max = 100,
@@ -402,7 +402,7 @@ shinyUI(fluidPage(
                                              h5('% of Total for 6th Category(Y)'), 
                                              fluidRow(
                                                column(6,
-                                                      numericInput('cat6_3',
+                                                      numericInput('cat6_3b',
                                                                    'Square 3',
                                                                    min = 0,
                                                                    max = 100,

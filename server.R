@@ -77,11 +77,17 @@ shinyServer(function(input, output){
 
   #build vector of percentages
   percs_1 <-   reactive({
+    if(input$sq_d == 1){
     c(input$cat1_1, input$cat2_1,
       input$cat3_1, input$cat4_1,
       input$cat5_1, input$cat6_1)[1:input$cats]
+    }else{
+      c(input$cat1_1b, input$cat2_1b,
+        input$cat3_1b, input$cat4_1b,
+        input$cat5_1b, input$cat6_1b)[1:input$cats]
     }
-    )
+  }
+  )
   
   percs_2 <-   reactive({
     c(input$cat1_2, input$cat2_2,
@@ -91,9 +97,15 @@ shinyServer(function(input, output){
   )
   
   percs_3 <-   reactive({
+    if(input$sq_d == 3){
     c(input$cat1_3, input$cat2_3,
       input$cat3_3, input$cat4_3,
       input$cat5_3, input$cat6_3)[1:input$cats]
+    }else{
+      c(input$cat1_3b, input$cat2_3b,
+        input$cat3_3b, input$cat4_3b,
+        input$cat5_3b, input$cat6_3b)[1:input$cats]
+    }
   }
   )
   
@@ -106,7 +118,7 @@ shinyServer(function(input, output){
   
   
   gen_square1 <- reactive({
-    plot_p_square(dim = input$dims, percents = percs_1(), title = TRUE)
+    plot_p_square(dim = input$dims, percents = percs_1())
   })
   
   gen_square2 <- reactive({
