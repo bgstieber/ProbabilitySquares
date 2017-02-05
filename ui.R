@@ -227,11 +227,201 @@ shinyUI(fluidPage(
     column(8,
            plotOutput(
              "squarePlot",
-             height = "600px"
+             height = "750px"
            )
     ),
     column(2,
-           h2('Placeholder'),
+           conditionalPanel("input.sq_d == 3",
+                            h4('Parameters for Third Square'),
+                            numericInput('cat1_3',
+                                         '% of Total for 1st Category (R)',
+                                         min = 0,
+                                         max = 100,
+                                         value = 50,
+                                         step = 1),
+                            numericInput('cat2_3',
+                                         '% of Total for 2nd Category (B)',
+                                         min = 0,
+                                         max = 100,
+                                         value = 50,
+                                         step = 1
+                            ),
+                            conditionalPanel("input.cats >= 3",
+                                             numericInput('cat3_3',
+                                                          '% of Total for 3rd Category (G)',
+                                                          min = 0,
+                                                          max = 100,
+                                                          step = 1,
+                                                          value = 50
+                                             )
+                            ),
+                            
+                            conditionalPanel("input.cats >= 4",
+                                             numericInput('cat4_3',
+                                                          '% of Total for 4th Category (P)',
+                                                          min = 0,
+                                                          max = 100,
+                                                          step = 1,
+                                                          value = 50
+                                             )
+                            ),
+                            
+                            conditionalPanel("input.cats >= 5",
+                                             numericInput('cat5_3',
+                                                          '% of Total for 5th Category (O)',
+                                                          min = 0,
+                                                          max = 100,
+                                                          step = 1,
+                                                          value = 50
+                                             )
+                            ),
+                            
+                            conditionalPanel("input.cats >= 6",
+                                             numericInput('cat6_3',
+                                                          '% of Total for 6th Category (Y)',
+                                                          min = 0,
+                                                          max = 100,
+                                                          step = 1,
+                                                          value = 50
+                                             )
+                            )
+             
+             
+           ),
+           
+           
+           
+           conditionalPanel("input.sq_d == 4",
+                            h5('% of Total for 1st Category(R)'), 
+                            fluidRow(
+                              column(6,
+                                     numericInput('cat1_3',
+                                                  'Square 3',
+                                                  min = 0,
+                                                  max = 100,
+                                                  value = 50,
+                                                  step = 1)
+                              ),
+                              column(6,
+                                     numericInput('cat1_4',
+                                                  'Square 4',
+                                                  min = 0,
+                                                  max = 100,
+                                                  value = 50,
+                                                  step = 1)
+                              )
+                              
+                            ),
+                            h5('% of Total for 2nd Category(B)'), 
+                            fluidRow(
+                              column(6,
+                                     numericInput('cat2_3',
+                                                  'Square 3',
+                                                  min = 0,
+                                                  max = 100,
+                                                  value = 50,
+                                                  step = 1)
+                              ),
+                              column(6,
+                                     numericInput('cat2_4',
+                                                  'Square 4',
+                                                  min = 0,
+                                                  max = 100,
+                                                  value = 50,
+                                                  step = 1)
+                              )
+                              
+                            ),
+                            conditionalPanel("input.cats > 2",
+                                             h5('% of Total for 3rd Category(G)'), 
+                                             fluidRow(
+                                               column(6,
+                                                      numericInput('cat3_3',
+                                                                   'Square 3',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               ),
+                                               column(6,
+                                                      numericInput('cat3_4',
+                                                                   'Square 4',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               )
+                                               
+                                             )
+                            ),
+                            conditionalPanel("input.cats > 3",
+                                             h5('% of Total for 4th Category(P)'), 
+                                             fluidRow(
+                                               column(6,
+                                                      numericInput('cat4_3',
+                                                                   'Square 3',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               ),
+                                               column(6,
+                                                      numericInput('cat4_4',
+                                                                   'Square 4',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               )
+                                               
+                                             )
+                            ),
+                            conditionalPanel("input.cats > 4",
+                                             h5('% of Total for 5th Category(O)'), 
+                                             fluidRow(
+                                               column(6,
+                                                      numericInput('cat5_3',
+                                                                   'Square 3',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               ),
+                                               column(6,
+                                                      numericInput('cat5_4',
+                                                                   'Square 4',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               )
+                                               
+                                             )
+                            ),
+                            conditionalPanel("input.cats > 5",
+                                             h5('% of Total for 6th Category(Y)'), 
+                                             fluidRow(
+                                               column(6,
+                                                      numericInput('cat6_3',
+                                                                   'Square 3',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               ),
+                                               column(6,
+                                                      numericInput('cat6_4',
+                                                                   'Square 4',
+                                                                   min = 0,
+                                                                   max = 100,
+                                                                   value = 50,
+                                                                   step = 1)
+                                               )
+                                               
+                                             )
+                            )
+                ),
+           
            
            helpText(a(href="https://twitter.com/PollsAndVotes/status/826619735152418816", 
                       target="_blank", "Inspiration from Twitter")),

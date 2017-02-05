@@ -4,7 +4,7 @@ library(scales)
 library(grid)
 library(gridExtra)
 
-plot_p_square <- function(dim, percents){
+plot_p_square <- function(dim, percents, title = FALSE){
   #require packages
   require(scales)
   require(ggplot2)
@@ -55,18 +55,22 @@ plot_p_square <- function(dim, percents){
                       percent(percents_adj), 
                       collapse = ", ")
   
+  full_title <- ifelse(title, full_title, '')
+  
   #draw plot
-  ggplot(sq_table, aes(x = x, y = y))+
+  plt <- ggplot(sq_table, aes(x = x, y = y))+
     geom_tile(aes(fill = factor(category)),
-              colour = 'grey90')+
+              colour = 'grey90', alpha = .8)+
     scale_fill_brewer(palette = 'Set1')+
     theme_minimal()+
     coord_fixed()+
     theme(legend.position = 'none',
           axis.text = element_blank(),
           axis.title = element_blank(),
-          panel.grid = element_blank())+
-    ggtitle(full_title, subtitle = sub_title)
+          panel.grid = element_blank(),
+          plot.margin= unit(rep(.1, 4), "lines"))+
+    ggtitle(full_title, subtitle = sub_title)+
+    labs(x = NULL, y = NULL)
 }
 
 shinyServer(function(input, output){
@@ -86,26 +90,67 @@ shinyServer(function(input, output){
   }
   )
   
+  percs_3 <-   reactive({
+    c(input$cat1_3, input$cat2_3,
+      input$cat3_3, input$cat4_3,
+      input$cat5_3, input$cat6_3)[1:input$cats]
+  }
+  )
+  
+  percs_4 <-   reactive({
+    c(input$cat1_4, input$cat2_4,
+      input$cat3_4, input$cat4_4,
+      input$cat5_4, input$cat6_4)[1:input$cats]
+  }
+  )
+  
+  
   gen_square1 <- reactive({
-    plot_p_square(dim = input$dims, percents = percs_1())
+    plot_p_square(dim = input$dims, percents = percs_1(), title = TRUE)
   })
   
   gen_square2 <- reactive({
     plot_p_square(dim = input$dims, percents = percs_2())
   })
+  
+  gen_square3 <- reactive({
+    plot_p_square(dim = input$dims, percents = percs_3())
+  })
+  
+  gen_square4 <- reactive({
+    plot_p_square(dim = input$dims, percents = percs_4())
+  })
 
-  #make the plot, lots of reactivity stuff
+  #make the plot
   output$squarePlot <- renderPlot(
     {
       if(input$sq_d == 1){
-        gen_square1()  
+        grid.arrange(gen_square1())
       }else if(input$sq_d == 2){
         grid.arrange(
           gen_square1(),
           gen_square2(),
           nrow = 1
         )
-        
+      }else if(input$sq_d == 3){
+        grid.arrange(
+          gen_square1(),
+          gen_square2(),
+          gen_square3(),
+          nrow = 2,
+          clip = TRUE,
+          padding = unit(.1, 'line')
+        )
+      }else{
+        grid.arrange(
+          gen_square1(),
+          gen_square2(),
+          gen_square3(),
+          gen_square4(),
+          nrow = 2,
+          clip = TRUE,
+          padding = unit(.1, 'line')
+        )
       }
       
   }
