@@ -118,7 +118,7 @@ shinyServer(function(input, output){
   
   
   gen_square1 <- reactive({
-    plot_p_square(dim = input$dims, percents = percs_1())
+    plot_p_square(dim = input$dims, percents = percs_1(), title = TRUE)
   })
   
   gen_square2 <- reactive({
