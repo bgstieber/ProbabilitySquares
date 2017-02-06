@@ -68,7 +68,8 @@ plot_p_square <- function(dim, percents, title = FALSE){
           axis.text = element_blank(),
           axis.title = element_blank(),
           panel.grid = element_blank(),
-          plot.margin= unit(rep(.1, 4), "lines"))+
+          plot.margin= unit(rep(.1, 4), "lines"),
+          plot.subtitle = element_text(size = 14))+
     ggtitle(full_title, subtitle = sub_title)+
     labs(x = NULL, y = NULL)
 }

@@ -32,6 +32,7 @@ shinyUI(fluidPage(
            
            #how many squares will we draw?
            conditionalPanel("input.sq_d == 1",
+                            h4('Parameters for First Square'),
                             numericInput('cat1_1',
                                          '% of Total for 1st Category (R)',
                                          min = 0,
@@ -89,6 +90,7 @@ shinyUI(fluidPage(
            
            #more than one square
            conditionalPanel("input.sq_d > 1",
+                            h4('Parameters for First and Second Square'),
                             h5('% of Total for 1st Category(R)'), 
                             fluidRow(
                               column(6,
@@ -292,6 +294,7 @@ shinyUI(fluidPage(
            
            
            conditionalPanel("input.sq_d == 4",
+                            h4('Parameters for Third and Fourth Square'),
                             h5('% of Total for 1st Category(R)'), 
                             fluidRow(
                               column(6,
