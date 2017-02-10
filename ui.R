@@ -18,17 +18,17 @@ shinyUI(fluidPage(
                        max = 100),
            
            #ask for number of categories
-           sliderInput('cats',
+           radioButtons('cats',
                        'Number of Categories',
-                       min = 2,
-                       max = 6,
-                       value = 2),
+                       choices = 2:6,
+                       selected = 2,
+                       inline = TRUE),
            
-           sliderInput('sq_d',
+           radioButtons('sq_d',
                        'Squares to Draw',
-                       min = 1,
-                       max = 4,
-                       value = 2),
+                       choices = 1:4,
+                       inline = TRUE,
+                       selected = 2),
            
            #how many squares will we draw?
            conditionalPanel("input.sq_d == 1",
