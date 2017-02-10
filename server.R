@@ -60,7 +60,7 @@ plot_p_square <- function(dim, percents, title = FALSE){
   #draw plot
   ggplot(sq_table, aes(x = x, y = y))+
     geom_tile(aes(fill = factor(category)),
-              colour = 'grey90', alpha = .8)+
+              colour = 'grey90', alpha = .85)+
     #scale_fill_brewer(palette = 'Set1') +
     scale_fill_manual(values = c(
       '1' = '#FF7F00', '2' = '#377EB8',
