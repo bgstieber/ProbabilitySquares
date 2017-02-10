@@ -34,7 +34,7 @@ shinyUI(fluidPage(
            conditionalPanel("input.sq_d == 1",
                             h4('Parameters for First Square'),
                             numericInput('cat1_1',
-                                         '% of Total for 1st Category (R)',
+                                         '% of Total for 1st Category (O)',
                                          min = 0,
                                          max = 100,
                                          value = 50,
@@ -68,7 +68,7 @@ shinyUI(fluidPage(
                             
                             conditionalPanel("input.cats >= 5",
                                              numericInput('cat5_1',
-                                                          '% of Total for 5th Category (O)',
+                                                          '% of Total for 5th Category (R)',
                                                           min = 0,
                                                           max = 100,
                                                           step = 1,
@@ -90,8 +90,8 @@ shinyUI(fluidPage(
            
            #more than one square
            conditionalPanel("input.sq_d > 1",
-                            h4('Parameters for First and Second Square'),
-                            h5('% of Total for 1st Category(R)'), 
+                            h4('Parameters for First and Second Squares'),
+                            h5('% of Total for 1st Category(O)'), 
                             fluidRow(
                               column(6,
                                      numericInput('cat1_1b',
@@ -177,7 +177,7 @@ shinyUI(fluidPage(
                                              )
                             ),
                             conditionalPanel("input.cats > 4",
-                                             h5('% of Total for 5th Category(O)'), 
+                                             h5('% of Total for 5th Category(R)'), 
                                              fluidRow(
                                                column(6,
                                                       numericInput('cat5_1b',
@@ -236,7 +236,7 @@ shinyUI(fluidPage(
            conditionalPanel("input.sq_d == 3",
                             h4('Parameters for Third Square'),
                             numericInput('cat1_3',
-                                         '% of Total for 1st Category (R)',
+                                         '% of Total for 1st Category (O)',
                                          min = 0,
                                          max = 100,
                                          value = 50,
@@ -270,7 +270,7 @@ shinyUI(fluidPage(
                             
                             conditionalPanel("input.cats >= 5",
                                              numericInput('cat5_3',
-                                                          '% of Total for 5th Category (O)',
+                                                          '% of Total for 5th Category (R)',
                                                           min = 0,
                                                           max = 100,
                                                           step = 1,
@@ -294,8 +294,8 @@ shinyUI(fluidPage(
            
            
            conditionalPanel("input.sq_d == 4",
-                            h4('Parameters for Third and Fourth Square'),
-                            h5('% of Total for 1st Category(R)'), 
+                            h4('Parameters for Third and Fourth Squares'),
+                            h5('% of Total for 1st Category(O)'), 
                             fluidRow(
                               column(6,
                                      numericInput('cat1_3b',
@@ -380,7 +380,7 @@ shinyUI(fluidPage(
                                              )
                             ),
                             conditionalPanel("input.cats > 4",
-                                             h5('% of Total for 5th Category(O)'), 
+                                             h5('% of Total for 5th Category(R)'), 
                                              fluidRow(
                                                column(6,
                                                       numericInput('cat5_3b',
