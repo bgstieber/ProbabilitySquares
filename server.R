@@ -49,7 +49,7 @@ plot_p_square <- function(dim, percents, title = FALSE){
   full_title <- paste(title1, title2, title3)
   
   #show percentages
-  col_display <- c('R','B','G','P','O','Y')[1:cats]
+  col_display <- c('O','B','G','P','R','Y')[1:cats]
   sub_title <- paste0(col_display, 
                       ": ", 
                       percent(percents_adj), 
@@ -61,7 +61,12 @@ plot_p_square <- function(dim, percents, title = FALSE){
   ggplot(sq_table, aes(x = x, y = y))+
     geom_tile(aes(fill = factor(category)),
               colour = 'grey90', alpha = .8)+
-    scale_fill_brewer(palette = 'Set1')+
+    #scale_fill_brewer(palette = 'Set1') +
+    scale_fill_manual(values = c(
+      '1' = '#FF7F00', '2' = '#377EB8',
+      '3' = '#4DAF4A', '4' = '#984EA3',
+      '5' = '#E41A1C', '6' = '#FFFF33'
+    ))+
     theme_minimal()+
     coord_fixed()+
     theme(legend.position = 'none',
